@@ -87,7 +87,7 @@ export const del = (id: number): Observable<Todo> => {
     })
 }
 
-export const search = (value: string): Observable<Todo[]> => {
+export const search = (value: string): Observable<Todo> => {
     return Observable.create(( observer: Observer<Todo[]> ) => {
         let timer = setTimeout(() => {
             let todos = [];
