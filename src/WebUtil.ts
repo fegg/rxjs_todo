@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable'
 import { Observer } from 'rxjs/Observer'
 
-import { Todo } from './inter/Todo'
+import { ITodo } from './inter/ITodo'
 
 let _dbIndex = 0
-let Store = new Map<number, Todo>()
+let Store = new Map<number, ITodo>()
 
 export const dbData = () => {
     console.group('keys:')
@@ -22,8 +22,8 @@ export const dbData = () => {
     }
 }
 
-export const put = (value: string): Observable<Todo> => {
-    return Observable.create(( observer: Observer<Todo> ) => {
+export const put = (value: string): Observable<ITodo> => {
+    return Observable.create(( observer: Observer<ITodo> ) => {
         let status = 'pending'
 
         let timer = setTimeout(() => {
@@ -46,8 +46,8 @@ export const put = (value: string): Observable<Todo> => {
     })
 }
 
-export const post = (id: number, value?: string): Observable<Todo> => {
-    return Observable.create(( observer: Observer<Todo> ) => {
+export const post = (id: number, value?: string): Observable<ITodo> => {
+    return Observable.create(( observer: Observer<ITodo> ) => {
         let timer = setTimeout(() => {
             let todo = Store.get(id)
 
@@ -70,8 +70,8 @@ export const post = (id: number, value?: string): Observable<Todo> => {
     })
 }
 
-export const del = (id: number): Observable<Todo> => {
-    return Observable.create(( observer: Observer<Todo> ) => {
+export const del = (id: number): Observable<ITodo> => {
+    return Observable.create(( observer: Observer<ITodo> ) => {
         let timer = setTimeout(() => {
             const todo = Store.get(id)
             Store.delete(id)
@@ -87,8 +87,8 @@ export const del = (id: number): Observable<Todo> => {
     })
 }
 
-export const search = (value: string): Observable<Todo[]> => {
-    return Observable.create(( observer: Observer<Todo[]> ) => {
+export const search = (value: string): Observable<ITodo[]> => {
+    return Observable.create(( observer: Observer<ITodo[]> ) => {
         let timer = setTimeout(() => {
             let todos = [];
 

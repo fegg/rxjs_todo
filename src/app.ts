@@ -19,7 +19,7 @@ import 'rxjs/add/operator/debounceTime'
 
 import { createTodoItem } from './TodoItem'
 import { put, post, del, dbData, search } from './WebUtil';
-import { Todo } from './inter/Todo';
+import { ITodo } from './inter/ITodo';
 
 const $input = <HTMLInputElement>document.querySelector('.todo-val')
 const $list = document.querySelector('.list-group')
@@ -103,7 +103,7 @@ const search$ = keydown$
     .map(e => (<HTMLInputElement>e.target).value)
     .switchMap(search)
     .do(clearActive)
-    .do((todos: Todo[]) => {
+    .do((todos: ITodo[]) => {
         if (todos && todos.length) {
             todos.forEach(todo => {
                 let item = document.querySelector(`#todo-item-${todo.id}`)

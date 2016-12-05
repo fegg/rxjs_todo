@@ -1,6 +1,6 @@
-import { Todo } from './inter/Todo';
+import { ITodo } from './inter/ITodo';
 
-export const createTodoItem = (todo: Todo): HTMLLIElement => {
+export const createTodoItem = (todo: ITodo): HTMLLIElement => {
   const dom = document.createElement('li');
   dom.classList.add('list-group-item');
   dom.setAttribute('id', `todo-item-${todo.id}`)
